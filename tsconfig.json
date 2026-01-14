@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"],
+      "@/app/*": ["./app/*"],
+      "content-collections": ["./.content-collections/generated"]
     }
   },
   "include": [
