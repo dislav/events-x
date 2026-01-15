@@ -25,6 +25,7 @@
         "@types/node": "^20",
         "@types/react": "^19",
         "@types/react-dom": "^19",
+        "@yandex/ymaps3-types": "^1.0.18413413",
         "eslint": "^9",
         "eslint-config-next": "16.1.1",
         "prettier": "^3.7.4",
@@ -740,6 +741,8 @@
     "@unrs/resolver-binding-win32-ia32-msvc": ["@unrs/resolver-binding-win32-ia32-msvc@1.11.1", "", { "os": "win32", "cpu": "ia32" }, "sha512-DCEI6t5i1NmAZp6pFonpD5m7i6aFrpofcp4LA2i8IIq60Jyo28hamKBxNrZcyOwVOZkgsRp9O2sXWBWP8MnvIQ=="],
 
     "@unrs/resolver-binding-win32-x64-msvc": ["@unrs/resolver-binding-win32-x64-msvc@1.11.1", "", { "os": "win32", "cpu": "x64" }, "sha512-lrW200hZdbfRtztbygyaq/6jP6AKE8qQN2KvPcJ+x7wiD038YtnYtZ82IMNJ69GJibV7bwL3y9FgK+5w/pYt6g=="],
+
+    "@yandex/ymaps3-types": ["@yandex/ymaps3-types@1.0.18413413", "", { "peerDependencies": { "@types/react": "^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "@types/react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "@vue/runtime-core": "3" }, "optionalPeers": ["@types/react", "@types/react-dom", "@vue/runtime-core"] }, "sha512-LYG5Frcx1X7JJ2aQvSj85qzpO+dLAPimsKk6ONOWMcGGfxhZCah4zMsy7Sb46hVRUvc0HXj6nKdSbx3jIQ3Xrg=="],
 
     "acorn": ["acorn@8.15.0", "", { "bin": { "acorn": "bin/acorn" } }, "sha512-NZyJarBfL7nWwIq+FDL6Zp/yHEhePMNnnJ0y3qfieCrmNvYct8uvtiV41UvlSe6apAfk0fY1FbWx+NwfmpvtTg=="],
 

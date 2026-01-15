@@ -45,6 +45,24 @@ const agenda = defineCollection({
     },
 });
 
+const prices = defineCollection({
+    name: 'prices',
+    directory: path.join(contentDir, 'prices'),
+    include: '**/*.md',
+    schema: v.object({
+        title: v.optional(v.string()),
+        description: v.optional(v.string()),
+        price: v.number(),
+        salePrice: v.optional(v.number()),
+        content: v.string(),
+    }),
+    transform: async (document, context) => {
+        const html = await compileMarkdown(context, document);
+
+        return { ...document, html };
+    },
+});
+
 const events = defineCollection({
     name: 'events',
     directory: path.join(contentDir, 'events'),
@@ -52,29 +70,23 @@ const events = defineCollection({
     schema: v.object({
         title: v.string(),
         description: v.optional(v.string()),
-        image: v.string(),
+        image: v.optional(v.string()),
         city: v.string(),
         address: v.string(),
-        meta: v.object({
+        hero: v.object({
             title: v.string(),
             description: v.optional(v.string()),
-            image: v.optional(v.string()),
+            image: v.string(),
         }),
-        dates: v.array(
+        days: v.array(
             v.object({
+                number: v.number(),
                 date: v.pipe(v.string(), v.isoDate()),
                 timeFrom: v.string(),
                 timeTo: v.string(),
+                title: v.optional(v.string()),
+                description: v.optional(v.string()),
             })
-        ),
-        days: v.optional(
-            v.array(
-                v.object({
-                    number: v.number(),
-                    title: v.string(),
-                    description: v.optional(v.string()),
-                })
-            )
         ),
         speakers: v.optional(v.array(v.string())),
         contacts: v.object({
@@ -83,6 +95,26 @@ const events = defineCollection({
             phones: v.optional(v.array(v.string())),
             emails: v.optional(v.array(v.string())),
         }),
+        map: v.optional(
+            v.object({
+                latitude: v.number(),
+                longitude: v.number(),
+                zoom: v.optional(v.number()),
+            })
+        ),
+        socials: v.optional(
+            v.array(
+                v.object({
+                    type: v.picklist([
+                        'vkontakte',
+                        'telegram',
+                        'telegram_channel',
+                        'website',
+                    ]),
+                    url: v.pipe(v.string(), v.url()),
+                })
+            )
+        ),
         footer: v.object({
             copyright: v.string(),
             fromYear: v.optional(v.number()),
@@ -97,5 +129,5 @@ const events = defineCollection({
 });
 
 export default defineConfig({
-    collections: [speakers, agenda, events],
+    collections: [speakers, agenda, prices, events],
 });

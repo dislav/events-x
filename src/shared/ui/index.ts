@@ -2,3 +2,7 @@ export * from './Header';
 export * from './Hero';
 export * from './Section';
 export * from './SectionHeading';
+export * from './PriceCard';
+export * from './Contacts';
+export * from './Social';
+export * from './YandexMap';

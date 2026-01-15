@@ -1,0 +1,1 @@
+export { useYMaps } from './useYMaps';

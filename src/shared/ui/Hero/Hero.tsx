@@ -10,7 +10,7 @@ interface HeroProps {
     title: string;
     description?: string;
     image?: string;
-    dates: Event['dates'];
+    days: Event['days'];
     city: string;
     address: string;
 }
@@ -20,7 +20,7 @@ export default function Hero({
     title,
     description,
     image,
-    dates,
+    days,
     city,
     address,
 }: HeroProps) {
@@ -64,13 +64,13 @@ export default function Hero({
                                 <CalendarIcon className="size-5" />
                             </div>
                             <div className="font-semibold">
-                                {dates
+                                {days
                                     .map((d) => format(parseISO(d.date), 'd'))
                                     .join(' и ')}{' '}
-                                {format(parseISO(dates[0].date), 'MMMM yyyy', {
+                                {format(parseISO(days[0].date), 'MMMM yyyy', {
                                     locale: ru,
                                 })}{' '}
-                                года с {dates[0].timeFrom} до {dates[0].timeTo}
+                                года с {days[0].timeFrom} до {days[0].timeTo}
                             </div>
                         </div>
                         <div className="flex items-center gap-4">

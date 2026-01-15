@@ -5,7 +5,7 @@ const speakerCardDetailedStyles = tv({
         base: ['flex items-center gap-14'],
         imageWrapper: ['flex-1 flex justify-center aspect-square'],
         image: ['size-full rounded-full object-cover'],
-        content: ['flex-1 flex flex-col gap-10 pr-6'],
+        content: ['flex-1 flex flex-col gap-10'],
         heading: ['flex flex-col gap-4'],
         mainPosition: ['font-semibold'],
         name: ['text-4xl font-semibold'],
@@ -17,7 +17,6 @@ const speakerCardDetailedStyles = tv({
             default: [],
             reverse: {
                 base: ['flex-row-reverse'],
-                content: ['pl-6 pr-0'],
             },
         },
     },
