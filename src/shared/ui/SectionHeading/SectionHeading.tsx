@@ -2,9 +2,9 @@ import { cn } from '@heroui/react';
 
 interface SectionHeadingProps {
     className?: string;
-    title: string;
     subtitle?: string;
-    description?: string;
+    title: React.ReactNode;
+    description?: React.ReactNode;
 }
 
 export default function SectionHeading({
@@ -21,7 +21,9 @@ export default function SectionHeading({
                 </h4>
             )}
             <h2 className="text-5xl font-semibold">{title}</h2>
-            {description && <p>{description}</p>}
+            {description && (
+                <p className="text-lg font-medium">{description}</p>
+            )}
         </div>
     );
 }

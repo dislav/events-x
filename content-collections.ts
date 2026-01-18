@@ -71,8 +71,18 @@ const events = defineCollection({
         title: v.string(),
         description: v.optional(v.string()),
         image: v.optional(v.string()),
-        city: v.string(),
-        address: v.string(),
+        location: v.object({
+            title: v.string(),
+            address: v.string(),
+            url: v.optional(v.pipe(v.string(), v.url())),
+            map: v.optional(
+                v.object({
+                    latitude: v.number(),
+                    longitude: v.number(),
+                    zoom: v.optional(v.number()),
+                })
+            ),
+        }),
         hero: v.object({
             title: v.string(),
             description: v.optional(v.string()),
@@ -95,13 +105,6 @@ const events = defineCollection({
             phones: v.optional(v.array(v.string())),
             emails: v.optional(v.array(v.string())),
         }),
-        map: v.optional(
-            v.object({
-                latitude: v.number(),
-                longitude: v.number(),
-                zoom: v.optional(v.number()),
-            })
-        ),
         socials: v.optional(
             v.array(
                 v.object({

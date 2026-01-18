@@ -1,26 +1,18 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Script from 'next/script';
 import {
     allAgenda,
     allPrices,
     allEvents,
     allSpeakers,
 } from 'content-collections';
-import Script from 'next/script';
 
-import {
-    Contacts,
-    Header,
-    Hero,
-    YandexMap,
-    Section,
-    SectionHeading,
-    PriceCard,
-} from '@/shared/ui';
+import { Header, Hero, Section, SectionHeading, PriceCard } from '@/shared/ui';
+import { MDXContent } from '@/widgets/mdx-content';
 import { AgendaSection } from '@/widgets/agenda-section';
 import { SpeakersSection } from '@/widgets/speakers-section';
-import { MDXContent } from '@/widgets/mdx-content';
-import Social from '@/shared/ui/Social/Social';
+import { ContactsSection } from '@/widgets/contacts-section';
 
 export async function generateMetadata({
     params,
@@ -60,8 +52,6 @@ export default async function EventPage({
         (s) => s._meta.directory === project
     );
 
-    console.log({ event, eventPrices });
-
     return (
         <>
             <Script
@@ -78,8 +68,7 @@ export default async function EventPage({
                     description={event.hero.description}
                     image={event.hero.image}
                     days={event.days}
-                    city={event.city}
-                    address={event.address}
+                    location={event.location}
                 />
 
                 <MDXContent code={event.mdx} />
@@ -93,7 +82,7 @@ export default async function EventPage({
                 )}
 
                 {eventPrices.length > 0 && (
-                    <Section id="prices">
+                    <Section id="prices" className="bg-slate-100">
                         <SectionHeading title="Стоимость участия" />
 
                         <div className="flex gap-8">
@@ -119,46 +108,11 @@ export default async function EventPage({
                     />
                 )}
 
-                <Section id="contacts">
-                    <div className="flex gap-8">
-                        <div className="flex-1">
-                            <Contacts
-                                organizer={event.contacts.organizer}
-                                address={event.contacts.address}
-                                phones={event.contacts.phones}
-                                emails={event.contacts.emails}
-                                socials={
-                                    event.socials && (
-                                        <div className="flex items-center gap-2">
-                                            {event.socials.map((social) => (
-                                                <Social
-                                                    key={social.url}
-                                                    url={social.url}
-                                                    type={social.type}
-                                                />
-                                            ))}
-                                        </div>
-                                    )
-                                }
-                            />
-                        </div>
-
-                        {event.map && (
-                            <div className="flex-1">
-                                <YandexMap
-                                    className="rounded-3xl overflow-hidden"
-                                    location={{
-                                        center: [
-                                            event.map.latitude,
-                                            event.map.longitude,
-                                        ],
-                                        zoom: event.map.zoom,
-                                    }}
-                                />
-                            </div>
-                        )}
-                    </div>
-                </Section>
+                <ContactsSection
+                    contacts={event.contacts}
+                    socials={event.socials}
+                    location={event.location}
+                />
             </main>
         </>
     );

@@ -1,17 +1,22 @@
-import { cn } from '@heroui/react';
+import { sectionStyles, type SectionVariants } from './Section.styles';
 
-interface SectionProps {
+interface SectionProps extends SectionVariants {
     id?: string;
     className?: string;
     children: React.ReactNode;
 }
 
-export default function Section({ id, className, children }: SectionProps) {
+export default function Section({
+    id,
+    className,
+    direction,
+    children,
+}: SectionProps) {
+    const styles = sectionStyles({ direction });
+
     return (
-        <section id={id} className={cn('flex justify-center py-20', className)}>
-            <div className="w-full max-w-360 flex flex-col gap-16 px-4">
-                {children}
-            </div>
+        <section id={id} className={styles.base({ className })}>
+            <div className={styles.wrapper()}>{children}</div>
         </section>
     );
 }

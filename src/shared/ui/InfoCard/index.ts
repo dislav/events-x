@@ -1,1 +1,1 @@
-export { default as IconInfoCard } from './IconInfoCard';
+export { default as InfoCard } from './InfoCard';

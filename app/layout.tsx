@@ -7,6 +7,7 @@ import Providers from '@/app/providers';
 const manrope = Manrope({
     variable: '--font-manrope',
     subsets: ['latin', 'cyrillic'],
+    weight: ['400', '500', '600', '700', '800'],
 });
 
 export const metadata: Metadata = {

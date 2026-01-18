@@ -6,10 +6,16 @@
 :root {
 }
 
-@theme inline {
+@theme {
     --font-sans: var(--font-manrope);
 }
 
 html {
     font-family: var(--font-sans);
+}
+
+@layer utilities {
+    .container {
+        @apply w-full max-w-380 flex px-4;
+    }
 }

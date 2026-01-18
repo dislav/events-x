@@ -20,7 +20,7 @@ export default function YandexMap({ className, location }: MapProps) {
         YMap,
         YMapDefaultSchemeLayer,
         YMapDefaultFeaturesLayer,
-        YMapMarker,
+        // YMapMarker,
     } = reactify.module(ymaps);
 
     return (
@@ -28,9 +28,9 @@ export default function YandexMap({ className, location }: MapProps) {
             <YMapDefaultSchemeLayer />
             <YMapDefaultFeaturesLayer />
 
-            <YMapMarker coordinates={reactify.useDefault(location.center)}>
-                <section>MARKER</section>
-            </YMapMarker>
+            {/*<YMapMarker coordinates={reactify.useDefault([location])}>*/}
+            {/*    <section>MARKER</section>*/}
+            {/*</YMapMarker>*/}
         </YMap>
     );
 }

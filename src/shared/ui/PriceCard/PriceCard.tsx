@@ -1,6 +1,8 @@
 import { Button } from '@heroui/button';
+import { Divider } from '@heroui/divider';
 
 import { priceCardStyles } from './PriceCard.styles';
+import { cn } from '@heroui/react';
 
 interface PriceCardProps {
     className?: string;
@@ -25,24 +27,48 @@ export default function PriceCard({
 
     return (
         <div className={styles.base({ className })}>
-            {(title || description) && (
-                <div>
-                    {title && (
-                        <h2 className="text-4xl font-semibold">{title}</h2>
+            <div className={styles.header()}>
+                {title && (
+                    <h4 className="inline-flex text-lg border border-gray-200 rounded-lg px-2 py-1">
+                        {title}
+                    </h4>
+                )}
+                <div className="flex flex-col items-start gap-1">
+                    <h2 className="text-primary text-5xl font-bold">
+                        {(salePrice ?? price).toLocaleString('ru')} ₽
+                    </h2>
+                    {salePrice && (
+                        <span
+                            className={cn(
+                                'relative text-gray-500 text-3xl',
+                                'after:absolute after:top-1/2 after:left-0 after:w-full after:border-b-2 after:border-gray-500'
+                            )}
+                        >
+                            {price.toLocaleString('ru')} ₽
+                        </span>
                     )}
-                    {description && <p>{description}</p>}
                 </div>
-            )}
-            {content && (
-                <div
-                    className="flex-1 prose max-w-none"
-                    dangerouslySetInnerHTML={{ __html: content }}
-                />
-            )}
-            <div>
-                <Button size="lg" color="primary" radius="full" fullWidth>
-                    Регистрация
-                </Button>
+                {description && <p>{description}</p>}
+            </div>
+            <div className={styles.body()}>
+                <Divider className="bg-gray-200" />
+                {content && (
+                    <div
+                        className={styles.content()}
+                        dangerouslySetInnerHTML={{ __html: content }}
+                    />
+                )}
+                <div>
+                    <Button
+                        size="lg"
+                        color="primary"
+                        radius="full"
+                        className="font-semibold"
+                        fullWidth
+                    >
+                        Регистрация
+                    </Button>
+                </div>
             </div>
         </div>
     );
