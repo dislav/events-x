@@ -7,16 +7,20 @@
         "build": "next build",
         "start": "next start",
         "lint": "eslint",
-        "format": "prettier --write \"src/**/*.{ts,tsx}\" --write \"app/**/*.{ts,tsx}\" --write \"content/**/*.{md,mdx}\""
+        "format": "prettier --write \"src/**/*.{ts,tsx}\" --write \"app/**/*.{ts,tsx}\" --write \"content/**/*.{md,mdx}\"",
+        "prepare": "husky"
     },
     "dependencies": {
         "@heroui/react": "^2.8.7",
+        "@hookform/resolvers": "^5.2.2",
         "date-fns": "^4.1.0",
+        "googleapis": "^170.1.0",
         "lucide-react": "^0.562.0",
-        "motion": "^12.27.0",
+        "motion": "^12.27.1",
         "next": "16.1.3",
         "react": "19.2.3",
         "react-dom": "19.2.3",
+        "react-hook-form": "^7.71.1",
         "tailwind-merge": "^3.4.0",
         "tailwind-variants": "^3.2.2"
     },
@@ -33,6 +37,7 @@
         "@yandex/ymaps3-types": "^1.0.18513693",
         "eslint": "^9.39.2",
         "eslint-config-next": "16.1.3",
+        "husky": "^9.1.7",
         "prettier": "^3.8.0",
         "tailwindcss": "^4.1.18",
         "typescript": "^5.9.3",

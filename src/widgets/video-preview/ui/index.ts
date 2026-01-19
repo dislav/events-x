@@ -1,1 +1,1 @@
-export { default as VideoPreview } from './VideoPreview';
+export * from './VideoPreview';

@@ -2,6 +2,7 @@
 title: VIP
 price: 30000
 salePrice: 28000
+order: 30
 ---
 
 ### В стоимость входит:

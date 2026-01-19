@@ -1,1 +1,1 @@
-export { default as ContactsSection } from './ContactsSection';
+export * from './ContactsSection';

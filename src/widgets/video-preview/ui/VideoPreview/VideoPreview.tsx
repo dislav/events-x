@@ -1,22 +1,18 @@
 'use client';
 
-import { Section, VideoPoster } from '@/shared/ui';
-import { Modal, ModalBody, ModalContent, useDisclosure } from '@heroui/modal';
-import { Skeleton } from '@heroui/skeleton';
 import { useState } from 'react';
 import { cn } from '@heroui/react';
+import { Modal, ModalBody, ModalContent, useDisclosure } from '@heroui/modal';
+import { Skeleton } from '@heroui/skeleton';
+
+import { Section, VideoPoster } from '@/shared/ui';
 
 interface VideoPreviewProps {
-    className?: string;
     poster: string;
     video: string;
 }
 
-export default function VideoPreview({
-    className,
-    poster,
-    video,
-}: VideoPreviewProps) {
+export default function VideoPreview({ poster, video }: VideoPreviewProps) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [isLoaded, setIsLoaded] = useState(false);
 

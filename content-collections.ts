@@ -54,6 +54,7 @@ const prices = defineCollection({
         description: v.optional(v.string()),
         price: v.number(),
         salePrice: v.optional(v.number()),
+        order: v.number(),
         content: v.string(),
     }),
     transform: async (document, context) => {

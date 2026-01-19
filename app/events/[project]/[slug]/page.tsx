@@ -8,9 +8,10 @@ import {
     allSpeakers,
 } from 'content-collections';
 
-import { Header, Hero, Section, SectionHeading, PriceCard } from '@/shared/ui';
+import { Header, Hero } from '@/shared/ui';
 import { MDXContent } from '@/widgets/mdx-content';
 import { AgendaSection } from '@/widgets/agenda-section';
+import { PricesSection } from '@/widgets/prices-section';
 import { SpeakersSection } from '@/widgets/speakers-section';
 import { ContactsSection } from '@/widgets/contacts-section';
 
@@ -82,23 +83,10 @@ export default async function EventPage({
                 )}
 
                 {eventPrices.length > 0 && (
-                    <Section id="prices" className="bg-slate-100">
-                        <SectionHeading title="Стоимость участия" />
-
-                        <div className="flex gap-8">
-                            {eventPrices.map((item) => (
-                                <PriceCard
-                                    key={item._meta.path}
-                                    title={item.title}
-                                    description={item.description}
-                                    price={item.price}
-                                    salePrice={item.salePrice}
-                                    content={item.html}
-                                    className="flex-1"
-                                />
-                            ))}
-                        </div>
-                    </Section>
+                    <PricesSection
+                        className="bg-slate-100"
+                        prices={eventPrices}
+                    />
                 )}
 
                 {event.speakers && event.speakers.length > 0 && (

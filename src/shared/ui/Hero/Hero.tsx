@@ -7,6 +7,7 @@ import { format, parseISO, isSameMonth } from 'date-fns';
 import { ru } from 'date-fns/locale';
 
 import type { Event } from 'content-collections';
+import { ContactFormButton } from '@/features/contact';
 import { Section } from '@/shared/ui';
 
 interface HeroProps {
@@ -62,14 +63,7 @@ export default function Hero({
                         </p>
                     )}
                     <div className="flex items-center gap-4">
-                        <Button
-                            size="lg"
-                            color="primary"
-                            radius="full"
-                            className="font-semibold"
-                        >
-                            Регистрация
-                        </Button>
+                        <ContactFormButton />
                         <Button
                             size="lg"
                             color="primary"

@@ -1,8 +1,8 @@
-import { Button } from '@heroui/button';
+import { cn } from '@heroui/react';
 import { Divider } from '@heroui/divider';
 
+import { ContactFormButton } from '@/features/contact';
 import { priceCardStyles } from './PriceCard.styles';
-import { cn } from '@heroui/react';
 
 interface PriceCardProps {
     className?: string;
@@ -58,17 +58,7 @@ export default function PriceCard({
                         dangerouslySetInnerHTML={{ __html: content }}
                     />
                 )}
-                <div>
-                    <Button
-                        size="lg"
-                        color="primary"
-                        radius="full"
-                        className="font-semibold"
-                        fullWidth
-                    >
-                        Регистрация
-                    </Button>
-                </div>
+                <ContactFormButton />
             </div>
         </div>
     );

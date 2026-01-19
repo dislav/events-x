@@ -1,6 +1,9 @@
-import { cn } from '@heroui/react';
+import {
+    sectionHeadingStyles,
+    type SectionHeadingVariants,
+} from './SectionHeading.styles';
 
-interface SectionHeadingProps {
+interface SectionHeadingProps extends SectionHeadingVariants {
     className?: string;
     subtitle?: string;
     title: React.ReactNode;
@@ -9,21 +12,28 @@ interface SectionHeadingProps {
 
 export default function SectionHeading({
     className,
+    color,
+    variant,
+    direction,
     title,
     subtitle,
     description,
 }: SectionHeadingProps) {
+    const styles = sectionHeadingStyles({ color, variant, direction });
+
     return (
-        <div className={cn('flex flex-col items-start gap-4', className)}>
+        <div className={styles.base({ className })}>
             {subtitle && (
-                <h4 className="font-semibold bg-primary-50 rounded-full px-5 py-2.5">
-                    {subtitle}
-                </h4>
+                <div className={styles.heading()}>
+                    <h4 className={styles.subtitle()}>{subtitle}</h4>
+                </div>
             )}
-            <h2 className="text-5xl font-semibold">{title}</h2>
-            {description && (
-                <p className="text-lg font-medium">{description}</p>
-            )}
+            <div className={styles.content()}>
+                <h2 className={styles.title()}>{title}</h2>
+                {description && (
+                    <p className={styles.description()}>{description}</p>
+                )}
+            </div>
         </div>
     );
 }
