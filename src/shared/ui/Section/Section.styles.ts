@@ -1,17 +1,18 @@
 import { tv, VariantProps } from 'tailwind-variants';
+import { SlotsToClasses } from '@heroui/react';
 
 const sectionStyles = tv({
     slots: {
-        base: ['flex justify-center py-20'],
+        base: ['flex justify-center py-12', 'md:py-20'],
         wrapper: ['container'],
     },
     variants: {
         direction: {
             col: {
-                wrapper: ['flex-col gap-16'],
+                wrapper: ['flex-col gap-8', 'md:gap-16'],
             },
             row: {
-                wrapper: ['flex-row items-start gap-8'],
+                wrapper: ['flex-col items-start gap-8', 'md:flex-row'],
             },
         },
     },
@@ -21,5 +22,7 @@ const sectionStyles = tv({
 });
 
 export type SectionVariants = VariantProps<typeof sectionStyles>;
+
+export type SectionSlots = keyof ReturnType<typeof sectionStyles>;
 
 export { sectionStyles };

@@ -1,13 +1,22 @@
+import { Link } from '@heroui/link';
+import { MessageCircleMore } from 'lucide-react';
+
 interface HeaderProps {
     className?: string;
 }
 
 export default function Header({ className }: HeaderProps) {
     return (
-        <header className="sticky top-0 h-16 flex justify-center gap-4 z-100">
+        <header className="sticky top-0 h-16 flex justify-center gap-8 z-100">
             <div className="container items-center">
-                <div className="text-xl font-semibold">Dialog.</div>
-                <div></div>
+                <Link href="/" className="gap-2">
+                    <div className="shrink-0 size-10 flex items-center justify-center text-white bg-primary rounded-full">
+                        <MessageCircleMore />
+                    </div>
+                    <span className="text-gray-800 text-lg font-semibold">
+                        Диалог
+                    </span>
+                </Link>
             </div>
         </header>
     );

@@ -69,9 +69,11 @@ const events = defineCollection({
     directory: path.join(contentDir, 'events'),
     include: '**/*.mdx',
     schema: v.object({
+        theme: v.optional(v.picklist(['default', 'orgzdrav'])),
         title: v.string(),
         description: v.optional(v.string()),
         image: v.optional(v.string()),
+        logo: v.optional(v.string()),
         location: v.object({
             title: v.string(),
             address: v.string(),
@@ -132,6 +134,21 @@ const events = defineCollection({
     },
 });
 
+const pages = defineCollection({
+    name: 'pages',
+    directory: path.join(contentDir, 'pages'),
+    include: '**/*.md',
+    schema: v.object({
+        title: v.string(),
+        content: v.string(),
+    }),
+    transform: async (document, context) => {
+        const html = await compileMarkdown(context, document);
+
+        return { ...document, html };
+    },
+});
+
 export default defineConfig({
-    collections: [speakers, agenda, prices, events],
+    collections: [speakers, agenda, prices, events, pages],
 });

@@ -1,4 +1,4 @@
-import { cn } from '@heroui/react';
+import { agendaItemStyles } from './AgendaItem.styles';
 
 interface AgendaItemProps {
     className?: string;
@@ -15,17 +15,19 @@ export default function AgendaItem({
     content,
     speakers,
 }: AgendaItemProps) {
+    const styles = agendaItemStyles();
+
     return (
-        <div className={cn('grid grid-cols-4 gap-14', className)}>
-            <div className="col-span-1 pl-8">
-                <span className="text-2xl font-semibold">{time}</span>
+        <div className={styles.base({ className })}>
+            <div className={styles.timeWrapper()}>
+                <span className={styles.time()}>{time}</span>
             </div>
-            <div className="col-span-3 flex flex-col gap-8 bg-foreground-50 border border-foreground-100 p-8 rounded-3xl">
-                <div className="flex flex-col gap-4">
-                    <h3 className="text-3xl font-semibold">{title}</h3>
+            <div className={styles.info()}>
+                <div className={styles.content()}>
+                    <h3 className={styles.title()}>{title}</h3>
                     {content && (
                         <div
-                            className="prose max-w-none"
+                            className={styles.text()}
                             dangerouslySetInnerHTML={{ __html: content }}
                         />
                     )}

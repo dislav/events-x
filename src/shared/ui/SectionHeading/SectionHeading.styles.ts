@@ -2,11 +2,11 @@ import { tv, VariantProps } from 'tailwind-variants';
 
 const sectionHeadingStyles = tv({
     slots: {
-        base: ['flex gap-8'],
+        base: ['flex gap-6', 'md:gap-8'],
         heading: ['flex flex-col items-start'],
         subtitle: ['font-semibold rounded-full px-5 py-2.5'],
         content: ['flex flex-col'],
-        title: ['text-5xl font-semibold'],
+        title: ['text-2xl font-semibold', 'md:text-5xl'],
         description: ['text-lg font-medium'],
     },
     variants: {
@@ -24,7 +24,7 @@ const sectionHeadingStyles = tv({
         },
         direction: {
             row: {
-                base: [],
+                base: ['flex-col', 'md:flex-row'],
                 heading: ['flex-1'],
                 content: ['flex-1'],
             },

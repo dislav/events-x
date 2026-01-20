@@ -1,5 +1,7 @@
 'use client';
 
+import { cn } from '@heroui/react';
+import { Skeleton } from '@heroui/skeleton';
 import type { YMapLocationRequest } from 'ymaps3';
 
 import { useYMaps } from '@/shared/lib/ymaps';
@@ -13,7 +15,7 @@ export default function YandexMap({ className, location }: MapProps) {
     const { ymaps, reactify } = useYMaps();
 
     if (!ymaps || !reactify) {
-        return null;
+        return <Skeleton className={cn('size-full', className)} />;
     }
 
     const {

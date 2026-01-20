@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { cn } from '@heroui/react';
 import { Button } from '@heroui/button';
 import { Link } from '@heroui/link';
 import { MapPinIcon } from 'lucide-react';
@@ -9,6 +8,7 @@ import { ru } from 'date-fns/locale';
 import type { Event } from 'content-collections';
 import { ContactFormButton } from '@/features/contact';
 import { Section } from '@/shared/ui';
+import { heroStyles } from './Hero.styles';
 
 interface HeroProps {
     className?: string;
@@ -27,8 +27,52 @@ export default function Hero({
     days,
     location,
 }: HeroProps) {
+    const styles = heroStyles();
+
     const sameMonth = days.every((d) =>
         isSameMonth(parseISO(days[0].date), parseISO(d.date))
+    );
+
+    const datesContent = (
+        <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+                {days.map((d) => {
+                    const date = parseISO(d.date);
+
+                    return (
+                        <div
+                            key={d.date}
+                            className="size-12 shrink-0 flex flex-col text-center border border-primary rounded-lg overflow-hidden"
+                        >
+                            <div className="text-white text-xs font-semibold bg-primary p-0.5">
+                                {format(date, 'MMM', {
+                                    locale: ru,
+                                })}
+                            </div>
+                            <div className="flex-1 flex items-center justify-center text-base/5 font-semibold">
+                                {format(date, 'd')}
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+            <div className="flex flex-col gap-0.5">
+                <div className="text-gray-800 font-semibold">
+                    {days
+                        .map((d, index) => {
+                            const date = parseISO(d.date);
+
+                            return `${format(date, `d${!sameMonth || (sameMonth && index === days.length - 1) ? ' MMMM' : ''}`, { locale: ru })}`;
+                        })
+                        .join(' и ')}
+                    {', '}
+                    {parseISO(days[0].date).getFullYear()}
+                </div>
+                <div className="text-gray-500 text-sm font-semibold">
+                    {days[0].timeFrom} – {days[0].timeTo} GMT+3
+                </div>
+            </div>
+        </div>
     );
 
     const locationContent = (
@@ -50,71 +94,39 @@ export default function Hero({
     );
 
     return (
-        <Section className={cn('relative h-dvh py-0 -mt-16', className)}>
-            <div className="w-1/2 h-full flex flex-col gap-8 pt-36 pr-8 pb-20">
-                <div className="flex-1 flex flex-col items-start justify-center gap-8">
+        <Section
+            className={className}
+            classNames={{
+                base: styles.base(),
+                wrapper: styles.wrapper(),
+            }}
+        >
+            <div className={styles.body()}>
+                <div className={styles.content()}>
                     <h1
-                        className="text-foreground-800 text-[56px]/14 font-bold [&_>_span]:text-primary"
+                        className={styles.title()}
                         dangerouslySetInnerHTML={{ __html: title }}
                     />
                     {description && (
-                        <p className="text-foreground-600 text-2xl font-medium">
-                            {description}
-                        </p>
+                        <p className={styles.description()}>{description}</p>
                     )}
-                    <div className="flex items-center gap-4">
-                        <ContactFormButton />
+                    <div className={styles.controls()}>
+                        <ContactFormButton
+                            buttonProps={{ className: styles.controlItem() }}
+                        />
                         <Button
                             size="lg"
                             color="primary"
                             variant="bordered"
                             radius="full"
-                            className="font-semibold"
+                            className={styles.controlItem()}
                         >
                             Программа
                         </Button>
                     </div>
                 </div>
-                <div className="flex flex-col gap-4">
-                    <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-2">
-                            {days.map((d) => {
-                                const date = parseISO(d.date);
-
-                                return (
-                                    <div
-                                        key={d.date}
-                                        className="size-12 shrink-0 flex flex-col text-center border border-primary rounded-lg overflow-hidden"
-                                    >
-                                        <div className="text-white text-xs font-semibold bg-primary p-0.5">
-                                            {format(date, 'MMM', {
-                                                locale: ru,
-                                            })}
-                                        </div>
-                                        <div className="flex-1 flex items-center justify-center text-base/5 font-semibold">
-                                            {format(date, 'd')}
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                        <div className="flex flex-col gap-0.5">
-                            <div className="text-gray-800 font-semibold">
-                                {days
-                                    .map((d, index) => {
-                                        const date = parseISO(d.date);
-
-                                        return `${format(date, `d${!sameMonth || (sameMonth && index === days.length - 1) ? ' MMMM' : ''}`, { locale: ru })}`;
-                                    })
-                                    .join(' и ')}
-                                {', '}
-                                {parseISO(days[0].date).getFullYear()}
-                            </div>
-                            <div className="text-gray-500 text-sm font-semibold">
-                                {days[0].timeFrom} – {days[0].timeTo} GMT+3
-                            </div>
-                        </div>
-                    </div>
+                <div className={styles.info()}>
+                    {datesContent}
                     {location.url ? (
                         <Link href={location.url} target="_blank">
                             {locationContent}
@@ -130,7 +142,7 @@ export default function Hero({
                     alt="Hero image"
                     width={1200}
                     height={1200}
-                    className="absolute left-1/2 w-1/2 h-full object-cover"
+                    className={styles.image()}
                 />
             )}
         </Section>

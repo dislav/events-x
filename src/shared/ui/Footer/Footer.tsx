@@ -3,5 +3,5 @@ interface FooterProps {
 }
 
 export default function Footer({ className }: FooterProps) {
-    return <div></div>;
+    return <footer>Footer</footer>;
 }

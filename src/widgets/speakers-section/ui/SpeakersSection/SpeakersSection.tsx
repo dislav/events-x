@@ -2,6 +2,7 @@ import type { Speaker } from 'content-collections';
 
 import { Section, SectionHeading } from '@/shared/ui';
 import { SpeakerCardDetailed } from '@/entities/speaker';
+import { speakersSectionStyles } from './SpeakersSection.styles';
 
 interface SpeakersSectionProps {
     className?: string;
@@ -14,15 +15,17 @@ export default function SpeakersSection({
     speakers,
     eventSpeakers,
 }: SpeakersSectionProps) {
+    const styles = speakersSectionStyles();
+
     const filterSpeakers = speakers.filter((s) =>
         eventSpeakers.includes(s._meta.fileName.split('.')[0])
     );
 
     return (
-        <Section id="speakers" className={className}>
+        <Section id="speakers" className={styles.base({ className })}>
             <SectionHeading title="Cпикеры" />
 
-            <div className="flex flex-col gap-14">
+            <div className={styles.content()}>
                 {filterSpeakers.map((speaker, index) => (
                     <SpeakerCardDetailed
                         key={speaker._meta.path}
@@ -31,6 +34,7 @@ export default function SpeakersSection({
                         image={speaker.image}
                         mainPosition={speaker.mainPosition}
                         additionalPosition={speaker.additionalPositions}
+                        className={styles.item()}
                     />
                 ))}
             </div>

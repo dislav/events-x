@@ -1,5 +1,7 @@
 import type { Price } from 'content-collections';
+
 import { PriceCard, Section, SectionHeading } from '@/shared/ui';
+import { pricesSectionStyles } from './PricesSection.styles';
 
 interface PricesSectionProps {
     className?: string;
@@ -10,13 +12,15 @@ export default function PricesSection({
     className,
     prices,
 }: PricesSectionProps) {
+    const styles = pricesSectionStyles();
+
     const sortedPrices = [...prices].sort((a, b) => a.order - b.order);
 
     return (
-        <Section id="prices" className={className}>
+        <Section id="prices" className={styles.base({ className })}>
             <SectionHeading title="Стоимость участия" />
 
-            <div className="flex gap-8">
+            <div className={styles.content()}>
                 {sortedPrices.map((item) => (
                     <PriceCard
                         key={item._meta.path}
@@ -25,7 +29,7 @@ export default function PricesSection({
                         price={item.price}
                         salePrice={item.salePrice}
                         content={item.html}
-                        className="flex-1"
+                        className={styles.item()}
                     />
                 ))}
             </div>

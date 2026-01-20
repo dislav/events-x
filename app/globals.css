@@ -6,7 +6,7 @@
 :root {
 }
 
-@theme {
+@theme inline {
     --font-sans: var(--font-manrope);
 }
 

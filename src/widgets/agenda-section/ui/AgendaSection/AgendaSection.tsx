@@ -70,7 +70,7 @@ export default function AgendaSection({
                                         content={item.html}
                                         speakers={
                                             speakers.length > 0 && (
-                                                <div className="grid grid-cols-3 gap-8">
+                                                <div className="grid gap-6 md:grid-cols-3 md:gap-8">
                                                     {speakers.map((s) => (
                                                         <SpeakerCardCompact
                                                             key={s._meta.path}
