@@ -72,7 +72,7 @@ const events = defineCollection({
         theme: v.optional(v.picklist(['default', 'orgzdrav'])),
         title: v.string(),
         description: v.optional(v.string()),
-        image: v.optional(v.string()),
+        image: v.string(),
         logo: v.optional(v.string()),
         location: v.object({
             title: v.string(),

@@ -16,6 +16,12 @@ html {
 
 @layer utilities {
     .container {
+        @apply w-full max-w-240 flex px-4;
+    }
+}
+
+[data-theme='orgzdrav'] {
+    .container {
         @apply w-full max-w-380 flex px-4;
     }
 }

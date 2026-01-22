@@ -1,4 +1,7 @@
-import { Header, Footer } from '@/shared/ui';
+import {
+    Header,
+    // Footer
+} from '@/shared/ui';
 
 export default function DetailLayout({
     children,
@@ -9,7 +12,7 @@ export default function DetailLayout({
         <>
             <Header />
             {children}
-            <Footer />
+            {/*<Footer />*/}
         </>
     );
 }

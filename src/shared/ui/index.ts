@@ -7,5 +7,6 @@ export * from './SectionHeading';
 export * from './PriceCard';
 export * from './Contacts';
 export * from './Social';
+export * from './TimelineGroup';
 export * from './VideoPoster';
 export * from './YandexMap';

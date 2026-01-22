@@ -2,7 +2,9 @@ import type { NextConfig } from 'next';
 import { withcontentCollections } from '@content-collections/next';
 
 const nextConfig: NextConfig = {
-    /* config options here */
+    images: {
+        qualities: [95],
+    },
 };
 
 export default withcontentCollections(nextConfig);
