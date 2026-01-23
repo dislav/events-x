@@ -26,12 +26,23 @@ export async function generateMetadata({
     params: Promise<{ project: string; slug: string }>;
 }): Promise<Metadata> {
     const { project, slug } = await params;
-    const event = allEvents.find((e) => e._meta.path === `${project}/${slug}`);
+    const eventPath = `${project}/${slug}`;
+
+    const event = allEvents.find((e) => e._meta.path === eventPath);
+    if (!event) return notFound();
 
     return {
         title: event?.title,
         description: event?.description,
     };
+}
+
+export async function generateStaticParams() {
+    return allEvents.map((e) => {
+        const [project, slug] = e._meta.path.split('/');
+
+        return { project, slug };
+    });
 }
 
 export default async function EventPage({
@@ -78,55 +89,53 @@ export default async function EventPage({
                 strategy="beforeInteractive"
             />
 
-            <div className={event.theme} data-theme={event.theme ?? 'default'}>
-                <Header logo={logo} />
+            <Header logo={logo} />
 
-                <main>
-                    <Hero
-                        title={event.hero.title}
-                        description={event.hero.description}
-                        image={event.hero.image}
-                        days={event.days}
-                        location={event.location}
-                    />
-
-                    <MDXContent code={event.mdx} />
-
-                    {eventAgenda.length > 0 && (
-                        <AgendaSection
-                            agenda={eventAgenda}
-                            eventDays={event.days}
-                            speakers={projectSpeakers}
-                        />
-                    )}
-
-                    {eventPrices.length > 0 && (
-                        <PricesSection
-                            className="bg-slate-100"
-                            prices={eventPrices}
-                        />
-                    )}
-
-                    {event.speakers && event.speakers.length > 0 && (
-                        <SpeakersSection
-                            speakers={projectSpeakers}
-                            eventSpeakers={event.speakers}
-                        />
-                    )}
-
-                    <ContactsSection
-                        contacts={event.contacts}
-                        socials={event.socials}
-                        location={event.location}
-                    />
-                </main>
-
-                <Footer
-                    logo={logo}
-                    copyright={event.footer.copyright}
-                    fromYear={event.footer.fromYear}
+            <main>
+                <Hero
+                    title={event.hero.title}
+                    description={event.hero.description}
+                    image={event.hero.image}
+                    days={event.days}
+                    location={event.location}
                 />
-            </div>
+
+                <MDXContent code={event.mdx} />
+
+                {eventAgenda.length > 0 && (
+                    <AgendaSection
+                        agenda={eventAgenda}
+                        eventDays={event.days}
+                        speakers={projectSpeakers}
+                    />
+                )}
+
+                {eventPrices.length > 0 && (
+                    <PricesSection
+                        className="bg-slate-100"
+                        prices={eventPrices}
+                    />
+                )}
+
+                {event.speakers && event.speakers.length > 0 && (
+                    <SpeakersSection
+                        speakers={projectSpeakers}
+                        eventSpeakers={event.speakers}
+                    />
+                )}
+
+                <ContactsSection
+                    contacts={event.contacts}
+                    socials={event.socials}
+                    location={event.location}
+                />
+            </main>
+
+            <Footer
+                logo={logo}
+                copyright={event.footer.copyright}
+                fromYear={event.footer.fromYear}
+            />
         </>
     );
 }

@@ -1,1 +1,5 @@
-export { default as EventPage, generateMetadata } from './EventPage';
+export {
+    generateMetadata,
+    generateStaticParams,
+    default as EventPage,
+} from './EventPage';

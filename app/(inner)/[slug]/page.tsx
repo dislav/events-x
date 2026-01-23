@@ -16,8 +16,6 @@ export default async function Page({
     const page = allPages.find((page) => page._meta.path === slug);
     if (!page) return notFound();
 
-    console.log(page);
-
     return (
         <Section>
             <SectionHeading title={page.title} />
