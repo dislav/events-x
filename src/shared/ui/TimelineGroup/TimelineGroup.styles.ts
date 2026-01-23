@@ -14,7 +14,7 @@ const timelineGroupStyles = tv({
         dateInner: [
             'border border-gray-200 bg-white/80 backdrop-blur-md rounded-full px-3 py-2',
         ],
-        content: ['flex flex-col gap-4'],
+        content: ['w-full flex flex-col gap-4'],
     },
 });
 

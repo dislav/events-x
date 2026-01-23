@@ -3,8 +3,8 @@ import { infoCardStyles } from './InfoCard.styles';
 interface IconTextCardProps {
     className?: string;
     subtitle: React.ReactNode;
-    title: string;
-    description?: string;
+    title: React.ReactNode;
+    description?: React.ReactNode;
 }
 
 export default function InfoCard({
@@ -21,7 +21,7 @@ export default function InfoCard({
             <div className={styles.content()}>
                 <h2 className={styles.title()}>{title}</h2>
                 {description && (
-                    <p className={styles.description()}>{description}</p>
+                    <div className={styles.description()}>{description}</div>
                 )}
             </div>
         </div>

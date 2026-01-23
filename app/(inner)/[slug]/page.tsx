@@ -1,6 +1,21 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { allPages } from 'content-collections';
+
 import { Section, SectionHeading } from '@/shared/ui';
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+
+    const page = allPages.find((p) => p._meta.path === slug);
+    if (!page) return notFound();
+
+    return { title: page.title };
+}
 
 export function generateStaticParams() {
     return allPages.map((page) => ({ slug: page._meta.path }));

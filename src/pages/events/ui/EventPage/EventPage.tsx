@@ -31,10 +31,7 @@ export async function generateMetadata({
     const event = allEvents.find((e) => e._meta.path === eventPath);
     if (!event) return notFound();
 
-    return {
-        title: event?.title,
-        description: event?.description,
-    };
+    return { title: `${event.title} · Диалог`, description: event.description };
 }
 
 export async function generateStaticParams() {

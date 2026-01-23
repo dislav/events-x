@@ -69,6 +69,7 @@ export default function TimelineSection({
                                     href={`/events/${event._meta.path}`}
                                 >
                                     <EventCard
+                                        className="w-full"
                                         time={`${event.days[0].timeFrom} – ${event.days[0].timeTo}`}
                                         title={event.title}
                                         description={event.description}

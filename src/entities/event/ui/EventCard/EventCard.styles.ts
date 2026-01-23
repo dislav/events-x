@@ -6,7 +6,7 @@ const eventCardStyles = tv({
             'flex flex-col-reverse gap-6 bg-slate-50 border border-slate-200 rounded-3xl p-6',
             'md:flex-row md:gap-8 md:p-8',
         ],
-        content: ['flex flex-col gap-4'],
+        content: ['flex-1 flex flex-col gap-4'],
         time: ['text-gray-600 font-semibold'],
         title: ['text-gray-800 text-lg font-semibold', 'md:text-2xl'],
         description: ['text-sm text-gray-600', 'md:text-base'],
