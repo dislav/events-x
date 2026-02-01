@@ -11,3 +11,4 @@ export * from './Social';
 export * from './TimelineGroup';
 export * from './VideoPoster';
 export * from './YandexMap';
+export * from './GradualBlur';

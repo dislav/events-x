@@ -74,6 +74,14 @@ const events = defineCollection({
         description: v.optional(v.string()),
         image: v.string(),
         logo: v.optional(v.string()),
+        menu: v.optional(
+            v.array(
+                v.object({
+                    label: v.string(),
+                    href: v.string(),
+                })
+            )
+        ),
         location: v.object({
             title: v.string(),
             address: v.string(),

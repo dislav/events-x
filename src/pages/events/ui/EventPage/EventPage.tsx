@@ -10,7 +10,7 @@ import {
     allSpeakers,
 } from 'content-collections';
 
-import { Hero } from '@/shared/ui';
+import { GradualBlur, Hero } from '@/shared/ui';
 import { MDXContent } from '@/widgets/mdx-content';
 import { AgendaSection } from '@/widgets/agenda-section';
 import { PricesSection } from '@/widgets/prices-section';
@@ -86,7 +86,9 @@ export default async function EventPage({
                 strategy="beforeInteractive"
             />
 
-            <Header logo={logo} />
+            <GradualBlur />
+
+            <Header logo={logo} menu={event.menu} />
 
             <main className="flex flex-col">
                 <Hero
