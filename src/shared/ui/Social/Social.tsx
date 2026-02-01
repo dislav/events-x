@@ -18,6 +18,7 @@ export default function Social({ className, url, type }: SocialProps) {
             className={className}
             href={url}
             isIconOnly
+            isExternal
         >
             <Icon className="size-5" name={type as SvgIconName} />
         </Button>

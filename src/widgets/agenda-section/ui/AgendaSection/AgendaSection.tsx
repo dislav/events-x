@@ -1,8 +1,10 @@
 import type { Agenda as AgendaType, Event, Speaker } from 'content-collections';
 
 import { SpeakerCardCompact } from '@/entities/speaker';
-import { AgendaItem, AgendaTitle } from '@/entities/agenda';
+import { AgendaGroup, AgendaItem, AgendaTitle } from '@/entities/agenda';
 import { Section, SectionHeading } from '@/shared/ui';
+
+import { agendaSectionStyles } from './AgendaSection.styles';
 
 interface AgendaProps {
     className?: string;
@@ -17,6 +19,8 @@ export default function AgendaSection({
     speakers,
     agendaInfo,
 }: AgendaProps) {
+    const styles = agendaSectionStyles();
+
     const agendaInfoByKey = agendaInfo
         ? agendaInfo.reduce(
               (acc, i) => {
@@ -51,60 +55,64 @@ export default function AgendaSection({
         : {};
 
     return (
-        <Section id="agenda" className={className}>
-            <SectionHeading title="Программа" />
+        <Section id="agenda" className={styles.base({ className })}>
+            <SectionHeading
+                color="primary"
+                subtitle="Программа"
+                title="Подробная программа мероприятия"
+            />
 
-            <div className="flex flex-col gap-14">
+            <div className={styles.content()}>
                 {Object.entries(agendaByKey).map(([key, items]) => {
                     const agendaInfo = agendaInfoByKey[key] || {};
 
                     return (
-                        <div key={key} className="flex flex-col gap-14">
-                            {agendaInfo && (
-                                <AgendaTitle
-                                    subtitle={agendaInfo.subtitle}
-                                    title={agendaInfo.title}
-                                />
-                            )}
-                            <div className="flex flex-col gap-14">
-                                {items.map((item) => {
-                                    const speakers = item.speakers
-                                        ? item.speakers
-                                              .map(
-                                                  (name) => speakersByName[name]
-                                              )
-                                              .filter(Boolean)
-                                        : [];
+                        <AgendaGroup
+                            key={key}
+                            header={
+                                agendaInfo && (
+                                    <AgendaTitle
+                                        subtitle={agendaInfo.subtitle}
+                                        title={agendaInfo.title}
+                                    />
+                                )
+                            }
+                        >
+                            {items.map((item) => {
+                                const speakers = item.speakers
+                                    ? item.speakers
+                                          .map((name) => speakersByName[name])
+                                          .filter(Boolean)
+                                    : [];
 
-                                    return (
-                                        <AgendaItem
-                                            key={item._meta.path}
-                                            time={item.time}
-                                            title={item.title}
-                                            content={item.html}
-                                            speakers={
-                                                speakers.length > 0 && (
-                                                    <div className="grid gap-6 md:grid-cols-3 md:gap-8">
-                                                        {speakers.map((s) => (
-                                                            <SpeakerCardCompact
-                                                                key={
-                                                                    s._meta.path
-                                                                }
-                                                                image={s.image}
-                                                                name={s.name}
-                                                                position={
-                                                                    s.mainPosition
-                                                                }
-                                                            />
-                                                        ))}
-                                                    </div>
-                                                )
-                                            }
-                                        />
-                                    );
-                                })}
-                            </div>
-                        </div>
+                                return (
+                                    <AgendaItem
+                                        key={item._meta.path}
+                                        time={item.time}
+                                        title={item.title}
+                                        content={item.html}
+                                        speakers={
+                                            speakers.length > 0 && (
+                                                <div
+                                                    className={styles.speakers()}
+                                                >
+                                                    {speakers.map((s) => (
+                                                        <SpeakerCardCompact
+                                                            key={s._meta.path}
+                                                            image={s.image}
+                                                            name={s.name}
+                                                            position={
+                                                                s.mainPosition
+                                                            }
+                                                        />
+                                                    ))}
+                                                </div>
+                                            )
+                                        }
+                                    />
+                                );
+                            })}
+                        </AgendaGroup>
                     );
                 })}
             </div>

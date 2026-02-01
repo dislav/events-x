@@ -20,8 +20,29 @@ html {
     }
 }
 
+/* Orgzdrav */
 [data-theme='orgzdrav'] {
     .container {
         @apply w-full max-w-380 flex px-4;
+    }
+
+    #hero {
+        @apply order-0;
+    }
+
+    #agenda {
+        @apply order-10;
+    }
+
+    #prices {
+        @apply order-20;
+    }
+
+    #speakers {
+        @apply order-30;
+    }
+
+    #contacts {
+        @apply order-40;
     }
 }

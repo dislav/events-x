@@ -94,6 +94,7 @@ export default function Hero({
 
     return (
         <Section
+            id="hero"
             className={className}
             classNames={{
                 base: styles.base(),

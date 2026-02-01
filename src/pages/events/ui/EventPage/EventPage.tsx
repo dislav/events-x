@@ -88,7 +88,7 @@ export default async function EventPage({
 
             <Header logo={logo} />
 
-            <main>
+            <main className="flex flex-col">
                 <Hero
                     title={event.hero.title}
                     description={event.hero.description}

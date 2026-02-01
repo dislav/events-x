@@ -38,7 +38,7 @@ const sectionHeadingStyles = tv({
             color: 'primary',
             variant: 'flat',
             class: {
-                subtitle: ['text-gray-800 bg-primary-100'],
+                subtitle: ['text-gray-800 bg-primary-50'],
             },
         },
     ],

@@ -3,7 +3,7 @@ import { SlotsToClasses } from '@heroui/react';
 
 const sectionStyles = tv({
     slots: {
-        base: ['flex justify-center py-12', 'md:py-20'],
+        base: ['flex justify-center py-12', 'md:py-24'],
         wrapper: ['container'],
     },
     variants: {

@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 const heroStyles = tv({
     slots: {
         base: ['relative pt-0', 'md:h-dvh md:py-0 md:-mt-16'],
-        wrapper: ['flex-col-reverse', 'md:flex-col'],
+        wrapper: ['flex flex-col-reverse', 'md:flex-col'],
         body: [
             'h-full flex flex-col gap-6',
             'md:w-1/2 md:gap-8 md:pt-36 md:pb-20 md:pr-8',

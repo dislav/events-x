@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 const infoCardStyles = tv({
     slots: {
         base: [
-            'flex flex-col gap-6 bg-white rounded-3xl p-6',
+            'flex flex-col items-start gap-6 bg-white rounded-3xl p-6',
             'md:gap-8 md:p-8',
         ],
         subtitle: [],

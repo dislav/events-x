@@ -4,13 +4,15 @@ image: /images/orgzdrav/speakers/vera-viktorovna.jpg
 mainPosition: Эксперт проекта «OrgZdrav»
 additionalPositions:
     - title: Юрисконсульт
-      icon: test
+      icon: staff-snake
+    - title: Организатор здравоохранения
+      icon: shield-check
     - title: Аудитор медицинских организаций
-      icon: test
+      icon: user-heart
     - title: Эксперт по медицинскому законодательству
-      icon: test
+      icon: kit-medical
     - title: Преподаватель медицинского права
-      icon: test
-    - title: Соавтор Проекта «OrgZdrav»
-      icon: test
+      icon: briefcase-medical
+    - title: Эксперт Проекта «OrgZdrav»
+      icon: shield-alt
 ---

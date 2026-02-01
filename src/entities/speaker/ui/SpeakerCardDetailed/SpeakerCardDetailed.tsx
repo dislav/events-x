@@ -39,14 +39,9 @@ export default function SpeakerCardDetailed({
             </div>
             <div className={styles.content()}>
                 <div className={styles.heading()}>
-                    <Chip
-                        size="lg"
-                        color="primary"
-                        variant="flat"
-                        classNames={{ content: styles.mainPosition() }}
-                    >
+                    <span className={styles.mainPosition()}>
                         {mainPosition}
-                    </Chip>
+                    </span>
                     <h3 className={styles.name()}>{name}</h3>
                 </div>
                 {additionalPosition && additionalPosition.length > 0 && (

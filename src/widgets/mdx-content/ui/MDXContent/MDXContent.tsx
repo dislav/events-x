@@ -1,6 +1,6 @@
 import { MDXContent as RootMDXContent } from '@content-collections/mdx/react';
 
-import { Section, SectionHeading, InfoCard } from '@/shared/ui';
+import { Section, SectionHeading, InfoCard, Icon } from '@/shared/ui';
 import { VideoPreview } from '@/widgets/video-preview';
 
 interface MdxContentProps {
@@ -16,6 +16,7 @@ export default function MdxContent({ code }: MdxContentProps) {
                 SectionHeading,
                 InfoCard,
                 VideoPreview,
+                Icon,
             }}
         />
     );

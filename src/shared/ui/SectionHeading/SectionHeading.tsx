@@ -6,7 +6,7 @@ import {
 interface SectionHeadingProps extends SectionHeadingVariants {
     className?: string;
     subtitle?: string;
-    title: React.ReactNode;
+    title?: React.ReactNode;
     description?: React.ReactNode;
 }
 
@@ -28,12 +28,14 @@ export default function SectionHeading({
                     <h4 className={styles.subtitle()}>{subtitle}</h4>
                 </div>
             )}
-            <div className={styles.content()}>
-                <h2 className={styles.title()}>{title}</h2>
-                {description && (
-                    <p className={styles.description()}>{description}</p>
-                )}
-            </div>
+            {(title || description) && (
+                <div className={styles.content()}>
+                    {title && <h2 className={styles.title()}>{title}</h2>}
+                    {description && (
+                        <p className={styles.description()}>{description}</p>
+                    )}
+                </div>
+            )}
         </div>
     );
 }
