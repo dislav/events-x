@@ -102,8 +102,8 @@ export default async function EventPage({
                 {eventAgenda.length > 0 && (
                     <AgendaSection
                         agenda={eventAgenda}
-                        eventDays={event.days}
                         speakers={projectSpeakers}
+                        agendaInfo={event.agenda}
                     />
                 )}
 

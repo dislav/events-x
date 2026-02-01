@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { cn } from '@heroui/react';
-import { LucidePlay } from 'lucide-react';
+
+import { Icon } from '@/shared/ui';
 
 interface VideoProps {
     className?: string;
@@ -31,7 +32,7 @@ export default function VideoPoster({
                 />
 
                 <div className="absolute top-1/2 left-1/2 size-16 text-white bg-primary flex items-center justify-center rounded-2xl -translate-1/2">
-                    <LucidePlay className="size-5" />
+                    <Icon className="size-5" name="play" />
                 </div>
             </div>
         </div>

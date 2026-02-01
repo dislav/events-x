@@ -1,6 +1,8 @@
 import { Link } from '@heroui/link';
 import { Button } from '@heroui/button';
 
+import { Icon, type SvgIconName } from '@/shared/ui';
+
 interface SocialProps {
     className?: string;
     url: string;
@@ -17,7 +19,7 @@ export default function Social({ className, url, type }: SocialProps) {
             href={url}
             isIconOnly
         >
-            {type}
+            <Icon className="size-5" name={type as SvgIconName} />
         </Button>
     );
 }

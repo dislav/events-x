@@ -11,7 +11,7 @@ const agendaItemStyles = tv({
         ],
         content: ['flex flex-col gap-4'],
         title: ['text-xl font-semibold', 'md:text-3xl'],
-        text: ['prose-sm max-w-none', 'md:prose'],
+        text: ['prose-sm', 'md:prose md:max-w-none'],
     },
 });
 

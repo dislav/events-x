@@ -1,13 +1,12 @@
 import Image from 'next/image';
 import { Button } from '@heroui/button';
 import { Link } from '@heroui/link';
-import { MapPinIcon } from 'lucide-react';
 import { format, parseISO, isSameMonth } from 'date-fns';
 import { ru } from 'date-fns/locale';
 
 import type { Event } from 'content-collections';
 import { ContactFormButton } from '@/features/contact';
-import { Section } from '@/shared/ui';
+import { Section, Icon } from '@/shared/ui';
 import { heroStyles } from './Hero.styles';
 
 interface HeroProps {
@@ -78,7 +77,7 @@ export default function Hero({
     const locationContent = (
         <div className="flex items-center gap-4">
             <div className="size-12 shrink-0 flex items-center justify-center border border-primary rounded-lg overflow-hidden">
-                <MapPinIcon className="size-5" />
+                <Icon className="size-5" name="location-pin" />
             </div>
             <div className="flex flex-col gap-0.5">
                 <div className="text-gray-800 font-semibold">

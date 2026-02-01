@@ -5,9 +5,9 @@ const sectionHeadingStyles = tv({
         base: ['flex gap-6', 'md:gap-8'],
         heading: ['flex flex-col items-start'],
         subtitle: ['font-semibold rounded-full px-5 py-2.5'],
-        content: ['flex flex-col'],
-        title: ['text-2xl font-semibold', 'md:text-5xl'],
-        description: ['text-lg font-medium'],
+        content: ['flex flex-col gap-6'],
+        title: ['text-gray-800 text-2xl font-semibold', 'md:text-5xl'],
+        description: ['text-gray-600 text-xl'],
     },
     variants: {
         color: {

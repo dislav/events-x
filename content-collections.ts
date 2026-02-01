@@ -32,9 +32,9 @@ const agenda = defineCollection({
     directory: path.join(contentDir, 'agenda'),
     include: '**/*.md',
     schema: v.object({
-        day: v.number(),
-        time: v.string(),
-        title: v.string(),
+        key: v.string(),
+        time: v.optional(v.string()),
+        title: v.optional(v.string()),
         speakers: v.optional(v.array(v.string())),
         content: v.string(),
     }),
@@ -93,13 +93,19 @@ const events = defineCollection({
         }),
         days: v.array(
             v.object({
-                number: v.number(),
                 date: v.pipe(v.string(), v.isoDate()),
                 timeFrom: v.string(),
                 timeTo: v.string(),
-                title: v.optional(v.string()),
-                description: v.optional(v.string()),
             })
+        ),
+        agenda: v.optional(
+            v.array(
+                v.object({
+                    key: v.string(),
+                    subtitle: v.string(),
+                    title: v.string(),
+                })
+            )
         ),
         speakers: v.optional(v.array(v.string())),
         contacts: v.object({

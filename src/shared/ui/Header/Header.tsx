@@ -1,5 +1,5 @@
 import { Link } from '@heroui/link';
-import { MessageCircleMore } from 'lucide-react';
+import { Icon } from '@/shared/ui';
 
 interface HeaderProps {
     className?: string;
@@ -11,7 +11,7 @@ export default function Header({ className }: HeaderProps) {
             <div className="container items-center">
                 <Link href="/" className="gap-2">
                     <div className="shrink-0 size-10 flex items-center justify-center text-white bg-primary rounded-full">
-                        <MessageCircleMore />
+                        <Icon name="message-circle" />
                     </div>
                     <span className="text-gray-800 text-lg font-semibold">
                         Диалог

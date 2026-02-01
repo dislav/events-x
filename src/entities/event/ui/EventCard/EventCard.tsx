@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { Users, MapPinIcon } from 'lucide-react';
 
+import { Icon } from '@/shared/ui';
 import { eventCardStyles } from './EventCard.styles';
 
 interface EventCardProps {
@@ -36,11 +36,11 @@ export default function EventCard({
                 </div>
                 <div className={styles.info()}>
                     <div className={styles.infoItem()}>
-                        <Users />
+                        <Icon name="user" />
                         {speakers}
                     </div>
                     <div className={styles.infoItem()}>
-                        <MapPinIcon />
+                        <Icon name="map-pin" />
                         {location}
                     </div>
                 </div>

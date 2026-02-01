@@ -1,3 +1,4 @@
+import { Icon, type SvgIconName } from '@/shared/ui';
 import { speakerPositionStyles } from './SpeakerPosition.styles';
 
 interface SpeakerPositionProps {
@@ -15,7 +16,11 @@ export default function SpeakerPosition({
 
     return (
         <div className={styles.base({ className })}>
-            {icon && <div className={styles.icon()}>{icon}</div>}
+            {icon && (
+                <div className={styles.icon()}>
+                    <Icon name={icon as SvgIconName} />
+                </div>
+            )}
             {title}
         </div>
     );

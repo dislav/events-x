@@ -20,16 +20,26 @@ hero:
     image: /images/orgzdrav/hero-1.jpg
 
 days:
-    - number: 1
-      date: 2026-02-07
+    - date: 2026-02-07
       timeFrom: 10:00
       timeTo: 18:00
-      title: Внутренний контроль качества и трудовое законодательство
-    - number: 2
-      date: 2026-02-08
+    - date: 2026-02-08
       timeFrom: 10:00
       timeTo: 18:00
-      title: Внутренний контроль качества и обеспечение безопасности клиники
+
+agenda:
+    - key: section1
+      subtitle: Блок 1
+      title: Единая система контроля организации деятельности клиники
+    - key: section2
+      subtitle: Блок 2
+      title: Внутренний контроль по охране труда и трудовому законодательству для медработников
+    - key: section3
+      subtitle: Блок 3
+      title: Внутренний контроль качества по обработке персональных данных
+    - key: section4
+      subtitle: Блок 4
+      title: Внутренний контроль качества по обеспечению безопасности
 
 speakers:
     - ivan-igorevich
@@ -57,112 +67,36 @@ footer:
     fromYear: 2019
 ---
 
-<Section id="about">
+<Section id="format">
     <SectionHeading
         color="primary"
         variant="flat"
-        subtitle="О семинаре"
+        subtitle="Формат мероприятия"
         title="Двухдневный семинар по выстраиванию структуры внутреннего контроля качества"
     />
 
-    <VideoPreview poster="/images/orgzdrav/poster.jpg" />
-
 </Section>
 
-<Section id="solutions" className="bg-slate-100" direction="row">
+<Section id="results" className="bg-slate-100" direction="row">
     <SectionHeading
         direction="col"
         className="flex-1 md:sticky md:top-20"
-        title="Программа семинара"
+        subtitle="Результат после обучения"
     />
 
     <div className="flex-1 flex flex-col gap-8">
         <InfoCard
             className="sticky top-20"
             subtitle={<span className="text-primary text-2xl font-bold">01</span>}
-            title="Внутренний контроль качества и ВК"
-            description={
-                <div className="prose max-w-none">
-                    <ul>
-                        <li>Новые требования к врачебным комиссиям</li>
-                        <li>Обязательные документы и типовые ошибки</li>
-                        <li>Судебные риски и неблагоприятные события</li>
-                        <li>Аудит протоколов и контроль со стороны главврача</li>
-                        <li>Алгоритм действий при выявлении инцидента</li>
-                    </ul>
-                </div>
-            }
+            title="Сертификаты"
+            description="Участникам выдаются сертификаты слушателя"
         />
 
         <InfoCard
             className="sticky top-20"
             subtitle={<span className="text-primary text-2xl font-bold">02</span>}
-            title="Охрана труда и кадровые вопросы"
-            description={
-                <div className="prose max-w-none">
-                    <ul>
-                        <li>Прием, увольнение, трудовые договоры</li>
-                        <li>Сверхурочные, дежурства, совместительство</li>
-                        <li>СОУТ, медосмотры, инструктажи</li>
-                        <li>Несчастные случаи и расследования</li>
-                        <li>Материальная ответственность и споры</li>
-                    </ul>
-                </div>
-            }
-        />
-
-        <InfoCard
-            className="sticky top-20"
-            subtitle={<span className="text-primary text-2xl font-bold">03</span>}
-            title="Аккредитация медицинских работников"
-            description={
-                <div className="prose max-w-none">
-                    <ul>
-                        <li>Пошаговый алгоритм подготовки</li>
-                        <li>ФИС ФРиДО</li>
-                        <li>Портфолио и отчеты</li>
-                        <li>Причины отказов и апелляции</li>
-                        <li>Индивидуальные планы подготовки</li>
-                    </ul>
-                </div>
-            }
-        />
-
-        <InfoCard
-            className="sticky top-20"
-            subtitle={<span className="text-primary text-2xl font-bold">04</span>}
-            title="Персональные данные и информационная безопасность"
-            description={
-                <div className="prose max-w-none">
-                    <ul>
-                        <li>Документы по ПДн: приказы, согласия, журналы</li>
-                        <li>Медицинская тайна</li>
-                        <li>Работа с пациентами и их требованиями</li>
-                        <li>Взаимодействие с третьими лицами</li>
-                        <li>Утечки и ответственность</li>
-                        <li>Аудит и обучение персонала</li>
-                    </ul>
-                </div>
-            }
-        />
-
-        <InfoCard
-            className="sticky top-20"
-            subtitle={<span className="text-primary text-2xl font-bold">05</span>}
-            title="Готовность к проверкам, ЧС и защита КИИ"
-            description={
-                <div className="prose max-w-none">
-                    <ul>
-                        <li>ГО и ЧС, пожарная безопасность</li>
-                        <li>Антитеррористическая защищенность</li>
-                        <li>Паспорт безопасности и план АТЗ</li>
-                        <li>Проверки МЧС и Росгвардии</li>
-                        <li>Инструктажи, тренировки, журналы</li>
-                        <li>Электробезопасность (1 группа)</li>
-                        <li>Логистика, эвакуация, пандемии</li>
-                    </ul>
-                </div>
-            }
+            title="Информация"
+            description="Отправляется пройденная информация в электронном виде"
         />
     </div>
 

@@ -6,16 +6,18 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
+        "build:icons": "bun scripts/build-sprite.ts",
         "lint": "eslint",
         "format": "prettier --write \"src/**/*.{ts,tsx}\" --write \"app/**/*.{ts,tsx}\" --write \"content/**/*.{md,mdx}\"",
-        "prepare": "husky"
+        "prepare": "husky",
+        "prebuild": "bun build:icons",
+        "predev": "bun build:icons"
     },
     "dependencies": {
-        "@heroui/react": "^2.8.7",
+        "@heroui/react": "^2.8.8",
         "@hookform/resolvers": "^5.2.2",
         "date-fns": "^4.1.0",
         "googleapis": "^170.1.0",
-        "lucide-react": "^0.563.0",
         "motion": "^12.29.2",
         "next": "16.1.6",
         "react": "19.2.4",
